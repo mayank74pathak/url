@@ -10,7 +10,6 @@ const RedirectLink = () => {
   useEffect(() => {
     const redirect = async () => {
       try {
-        // 1️⃣ Fetch original URL from backend
         const data = await getLongUrl(id);
 
         if (!data?.original_url) {
@@ -18,11 +17,12 @@ const RedirectLink = () => {
           return;
         }
 
-        // 2️⃣ Store click in DB
-        await storeClicks({ id: data.id, originalUrl: data.original_url });
+        // 1️⃣ Redirect immediately
+        window.location.replace(data.original_url); // use replace instead of href
 
-        // 3️⃣ Redirect browser
-        window.location.href = data.original_url;
+        // 2️⃣ Log click in background (async, does not block redirect)
+        storeClicks({ id: data.id }).catch(err => console.error(err));
+
       } catch (err) {
         console.error("Redirect failed:", err);
       }

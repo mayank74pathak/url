@@ -6,24 +6,26 @@ import { BarLoader } from "react-spinners";
 
 const RedirectLink = () => {
   const { id } = useParams();
-const data = await getLongUrl(id);
-const data = await getLongUrl(id);
-console.log("Param ID:", id);
-console.log("Data from Supabase:", data);
+
   useEffect(() => {
     const redirect = async () => {
       try {
+        // ✅ Fetch data here, not outside
         const data = await getLongUrl(id);
+
+        // 🔍 Debug logs
+        console.log("Param ID:", id);
+        console.log("Data from Supabase:", data);
 
         if (!data?.original_url) {
           console.error("Original URL not found");
           return;
         }
 
-        // 1️⃣ Redirect immediately
+        // Redirect immediately
         window.location.href = data.original_url;
 
-        // 2️⃣ Log click in background (async, does not block redirect)
+        // Log click in background (doesn’t block redirect)
         storeClicks({ id: data.id }).catch(err => console.error(err));
 
       } catch (err) {

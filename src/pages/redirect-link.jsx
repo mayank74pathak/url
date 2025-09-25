@@ -18,7 +18,7 @@ const RedirectLink = () => {
         }
 
         // 1️⃣ Redirect immediately
-        window.location.replace(data.original_url); // use replace instead of href
+        window.location.href = data.original_url;
 
         // 2️⃣ Log click in background (async, does not block redirect)
         storeClicks({ id: data.id }).catch(err => console.error(err));

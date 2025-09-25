@@ -74,8 +74,8 @@ const Link = () => {
           <span className="text-6xl font-extrabold hover:underline cursor:pointer">
             {url?.title}
           </span>
-          <a href={`https://trimrr.in/${link}`} target="_blank">
-            https://trimrr.in/{link}
+          <a href={`https://neon-daifuku-94d2cf.netlify.app/${link}`} target="_blank">
+            https://neon-daifuku-94d2cf.netlify.app/{link}
           </a>
           <a
             href={url?.original_url}
@@ -93,7 +93,7 @@ const Link = () => {
               variant="ghost"
               onClick={() =>
                 navigator.clipboard.writeText(
-                  `https://trimrr.in/${url?.short_url}`
+                  `https://neon-daifuku-94d2cf.netlify.app/${url?.short_url}`
                 )
               }
             >

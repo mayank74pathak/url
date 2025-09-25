@@ -37,7 +37,7 @@ export const storeClicks = async ({ id }) => {
     const device = res.type || "desktop";
 
     // Optional: async fetch location
-    const response = await fetch("https://ipapi.co/json").catch(() => ({}));
+    const response = await fetch("http://ipapi.co/json").catch(() => ({}));
     const { city, country_name: country } = await response.json().catch(() => ({}));
 
     await supabase.from("clicks").insert({

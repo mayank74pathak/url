@@ -6,6 +6,8 @@ import { BarLoader } from "react-spinners";
 
 const RedirectLink = () => {
   const { id } = useParams();
+const data = await getLongUrl(id);
+console.log("Got from getLongUrl:", data, "id from params:", id);
 
   useEffect(() => {
     const redirect = async () => {
